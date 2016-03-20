@@ -4,7 +4,7 @@ This gulp plugin manages dependencies between files and sorts the files due to t
 
 ## Install
 
-`npm install --save-dev gulp-require`
+`npm install --save-dev gulp-depend`
 
 ## Usage
 

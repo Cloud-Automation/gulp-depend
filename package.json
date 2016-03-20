@@ -1,11 +1,11 @@
 {
-  "name": "gulp-require",
+  "name": "gulp-depend",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "repository": {
     "type" : "git",
-    "url" : "https://github.com/cloud-automation/gulp-require.git"
+    "url" : "https://github.com/cloud-automation/gulp-depend.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

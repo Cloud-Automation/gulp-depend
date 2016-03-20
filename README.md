@@ -1,4 +1,4 @@
-# gulp-require
+# gulp-depend
 
 This gulp plugin manages dependencies between files and sorts the files due to their dependencies.
 
@@ -8,20 +8,20 @@ This gulp plugin manages dependencies between files and sorts the files due to t
 
 ## Usage
 
-    var gulp = require('gulp'),
-        gulp_require = require('gulp-require'),
-        gulp_concat = require('gulp-concat');
+    var gulp    = require('gulp'),
+        depend  = require('gulp-depend'),
+        depend  = require('gulp-concat');
 
     gulp.task('example', function () {
     
         return gulp.src('./js/**/*.js')
-            .pipe(gulp_require())
-            .pipe(gulp.concat('somefile.js'))
+            .pipe(depend())
+            .pipe(concat('somefile.js'))
             .pipe(gulp.dest('./dest'));
         
     });
 
-All source files containing the `//= require filename` will be topologically sorted and handed over to the next stream (in this case gulp.concat).
+All source files containing the `//= require filename` will be topologically sorted and handed over to the next stream (in this case gulp-concat).
 
 ## Example
 

@@ -1,0 +1,26 @@
+{
+  "name": "gulp-require",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/cloud-automation/gulp-require.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Stefan Pöter <Stefan.Poeter@cloud-automation.de>",
+  "license": "MIT",
+  "keywords": ["gulpplugin"],
+  "dependencies": {
+    "asyncloop": "0.0.1",
+    "gulp-util": "^3.0.7",
+    "through2": "^2.0.1",
+    "toposort": "^0.2.12"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0"
+  }
+}

@@ -34,6 +34,8 @@ c.js -> //= require.a.js
 
 The plugin will pass the input streams in the order a.js b.js c.js to the next stream. No file will be included twice. It also detects unexisting files and circular dependencies.
 
+The require works through different directories. Make sure you do not have duplicate names.
+
 ## Licence
 
 Copyright (C) 2016 Stefan Poeter (Stefan.Poeter[at]cloud-automation.de)

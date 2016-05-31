@@ -23,11 +23,13 @@ var getRequiredFiles = function (file, cb) {
             return;
 
 
-        filename = path.dirname(file) + '/' + 
+        var tmp = path.dirname(file) + '/' + 
                     line.substring(
                         line.indexOf('require') + 'require'.length).trim();
 
-        filename = path.normalize(filename);
+        var absPath = path.normalize(tmp);
+
+        var filename = path.basename(absPath);
 
         files.push(filename);
 
@@ -49,7 +51,7 @@ var prepTopoSort = function (files) {
   
         f.require.forEach(function (r, j) {
 
-            graph.push([r, f.absolute]); 
+            graph.push([r, path.basename(f.absolute)]); 
         
         });
 
@@ -66,7 +68,7 @@ module.exports = function () {
         allFiles    = { };
 
     var bufferContent = function (file, enc, cb) {
- 
+
         if (file.isNull() || file.isStream()) {
             cb();
             return;
@@ -80,7 +82,7 @@ module.exports = function () {
 
         }
 
-        allFiles[file.path] = file;
+        allFiles[path.basename(file.path)] = file;
 
         var item = {
             'file'      : file,
@@ -90,7 +92,6 @@ module.exports = function () {
 
         getRequiredFiles(file.path, (rFiles) => {
         
-
             item.require = rFiles;
             files.push(item);
             cb();
@@ -105,7 +106,7 @@ module.exports = function () {
             i       = 0;
 
         var done = function () {
-     
+   
             var graph       = prepTopoSort(files),
                 toposort    = require('toposort'),
                 sorted;
@@ -117,19 +118,21 @@ module.exports = function () {
                 cb();
                 return;
             }
-     
+  
             files.forEach(function (f, i) {
-            
-                if (sorted.indexOf(f.absolute) === -1) {
+
+                var bs = path.basename(f.absolute);
+
+                if (sorted.indexOf(bs) === -1) {
                 
-                    sorted.push(f.absolute);
+                    sorted.push(bs);
 
                 }
             
             });
 
             sorted.forEach(function (f, i) {
-           
+
                 if (!allFiles[f]) {
                     this.emit('error', new PluginError('gulp-require', f + ' required but not found.'));
                     cb();

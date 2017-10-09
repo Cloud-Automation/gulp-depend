@@ -16,7 +16,7 @@ var getRequiredFiles = function (file, cb) {
 
     lineReader.on('line', (line) => {
  
-        if (line.indexOf("//=") === -1)
+        if (line.indexOf("//=") === -1 && line.indexOf("// =") === -1)
             return; 
        
         if (line.indexOf('require') === -1)
